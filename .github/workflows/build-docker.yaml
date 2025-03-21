@@ -5,6 +5,7 @@ on:
 jobs:
   publish_images:
     runs-on: ubuntu-latest
+    environment: docker
     steps: 
       - name: checkout
         uses: actions/checkout@v4
