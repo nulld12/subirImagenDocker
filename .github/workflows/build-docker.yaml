@@ -1,6 +1,8 @@
 name: Crear y subir imagen de docker file
 on: 
-  [workflow_dispatch]
+  push:
+    branches:
+      - main
 
 jobs:
   publish_images:
