@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  express-app:
+    image: mi-backend:v2        
+    container_name: express_app
+    environment:
+      DB_HOST: "mysql"           
+      DB_USER: "myapp"
+      DB_PASSWORD: "myappsecret"
+      DB_NAME: "portainer"
+    depends_on:
+      - mysql
+    ports:
+      - "3000:3000"
+    restart: always
+
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret123"   
+      MYSQL_DATABASE: "portainer"        
+      MYSQL_USER: "myapp"               
+      MYSQL_PASSWORD: "myappsecret"    
+    volumes:
+      - ./mysql_data:/var/lib/mysql     
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  
+    ports:
+      - "3306:3306"
+    restart: always
