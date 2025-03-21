@@ -5,10 +5,10 @@ on:
 jobs:
   publish_images:
     runs-on: ubuntu-latest
-    setps: 
+    steps: 
       - name: checkout
         uses: actions/checkout@v4
       - name: construir imagen
-        run:  docker build -t nulld12/api-usuarios:latest.
+        run:  docker build . -t nulld12/api-usuarios:latest
       - name: subir imagen a docker
         run:  docker push nulld12/api-usuarios:latest  
