@@ -9,7 +9,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.token }}" | docker login -u "${{ secrets.user }}" --password-stdin
       - name: construir imagen
         run:  docker build . -t nulld12/api-usuarios:latest
       - name: subir imagen a docker
