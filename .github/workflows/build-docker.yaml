@@ -1,0 +1,14 @@
+name: Crear y subir imagen de docker file
+on: 
+  [workflow_dispatch]
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-latest
+    setps: 
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: construir imagen
+        run:  docker build -t nulld12/api-usuarios:latest.
+      - name: subir imagen a docker
+        run:  docker push nulld12/api-usuarios:latest  
