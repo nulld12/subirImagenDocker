@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   express-app:
-    image: mi-backend:v2        
-    container_name: express_app
+    image: nulld12/api-usuarios:latest     
+    container_name: express_app2
     environment:
       DB_HOST: "mysql"           
       DB_USER: "myapp"
@@ -17,7 +17,7 @@ services:
 
   mysql:
     image: mysql:8
-    container_name: mysql_db
+    container_name: mysql_db2
     environment:
       MYSQL_ROOT_PASSWORD: "secret123"   
       MYSQL_DATABASE: "portainer"        
@@ -27,5 +27,5 @@ services:
       - ./mysql_data:/var/lib/mysql     
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql  
     ports:
-      - "3306:3306"
+      - "3307:3306"
     restart: always
